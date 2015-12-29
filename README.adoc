@@ -1,7 +1,7 @@
-= CF Cassandra Demo
+= Cassandra Demo - StockAnalyzerV3
 
 This is a demo application that:
 
 * uses Spring Boot
 * implements a http://http://cloud.spring.io/spring-cloud-connectors[spring-cloud-connector] for the Pivotal CF DataStax Enterprise Service
-* presents a basic REST interface to a `person` column family/table in Cassandra
+* History of the stock tickers is persisted in a table in Cassandra
