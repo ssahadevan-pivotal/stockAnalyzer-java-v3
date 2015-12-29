@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <link type="text/css" rel="stylesheet" href="css/main.css" />
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </head>
+   <body>
+    <!--  Header -->
+     
+<div>
+       <ul id="nav">
+        <li><a href="/index">Home</a></li>
+	<li><a href="/configure">Configure</a></li>
+	<li><a href="/discover">Discover</a></li>
+	<li><a href="/history">History</a></li>
+	<li><a href="/filterHistory">Filter History</a></li>
+      <li><a href="/getMacroEconData">MacroData</a></li>
+        <li><a href="http://twitter.com/sharath_sahadev">Contact us</a></li> 
+        <li><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></li>
+	</ul>
+</div>
+<br></br>
+   
+     <!--  {% include "nav.html" %} --> 
+            <div align="center">           
+            
+
+
+<p class="ex1"></p>
+<b> <p th:text="'History of recommendations'" /></b> 
+
+&nbsp;&nbsp;
+ <div align="center" th:unless="${#lists.isEmpty(tickerHistoryList)}">
+       <table id="box-table-a" summary="CurrentConfiguration">
+                <thead>
+                    <tr>
+                        <th scope="col">Ticker</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">pe</th>
+                        <th scope="col">Yield</th>
+                        <th scope="col">Recommendation</th>     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="tickerHistory : ${tickerHistoryList}">
+                        <td>  <p th:text="${tickerHistory.getTicker()}"   /> </td>
+                        <td>  <p th:text="${tickerHistory.price}"   /> </td>
+                        <td>  <p th:text="${tickerHistory.pe}" /> </td>
+                        <td>  <p th:text="${tickerHistory.yield}" /> </td>
+                        <td>  <p th:text="${tickerHistory.recommendation}" /> </td>
+ 				    </tr>
+                </tbody>
+                </table>            
+            </div>   
+
+
+</div>
+            <!--  Commented Out {% include "disclaimer.html" %} -->
+ <!--  Disclaimer -->
+ <div align="center">
+ <p class="ex2">*Consult your financial advisor and perform independent research before conducting any trades</p>
+ </div>
+
+   
+      
+   </body>
+ </html>

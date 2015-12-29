@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <link type="text/css" rel="stylesheet" href="css/main.css" />
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </head>
+   <body>
+    <!--  Header -->
+     
+<div>
+       <ul id="nav">
+        <li><a href="/index">Home</a></li>
+	<li><a href="/configure">Configure</a></li>
+	<li><a href="/discover">Discover</a></li>
+	<li><a href="/history">History</a></li>
+	<li><a href="/filterHistory">Filter History</a></li>
+      <li><a href="/getMacroEconData">MacroData</a></li>
+        <li><a href="http://twitter.com/sharath_sahadev">Contact us</a></li> 
+        <li><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></li>
+	</ul>
+</div>
+<br></br>
+   
+     <!--  {% include "nav.html" %} --> 
+      <form action="/submitTicker" method="post">
+            <div align="center">  
+             <table>
+              <tr>
+                <th>"S&amp;P 500"</th>
+                <th>DJIA</th>
+                <th>Nasdaq</th>
+		    <th>VIX</th>
+                <th>BSE Sensex</th>
+                <th>FTSE 100</th>
+                <th>SPDR Gold Trust (ETF)</th>
+              </tr>
+              <tr>
+                <td><img src="http://www.google.com/finance/chart?q=INDEXSP:.INX&amp;tlf=12" alt="Chart for S&amp;P " title="S&amp;P"/></td>
+                <td><img src="http://www.google.com/finance/chart?q=INDEXDJX:.DJI&amp;tlf=12" alt="Chart for DJIA " title="DJIA"/></td>
+                <td><img src="http://www.google.com/finance/chart?q=INDEXNASDAQ:.IXIC&amp;tlf=12" alt="Chart for Nasdaq " title="Nasdaq"/></td>
+		    <td><img src="http://www.google.com/finance/chart?q=INDEXCBOE:VIX&amp;tlf=12" alt="VIX" title="VIX"/></td>
+                <td><img src="http://www.google.com/finance/chart?q=INDEXBOM:SENSEX&amp;tlf=12" alt="Chart for BSE Sensex " title="BSE Sensex"/></td>
+                <td><img src="http://www.google.com/finance/chart?q=INDEXFTSE:UKX&amp;tlf=12" alt="FTSE 100 " title="FTSE 100"/></td>
+                <td><img src="http://www.google.com/finance/chart?q=NYSEARCA:GLD&amp;tlf=12" alt="Gold " title="SPDR Gold Trust (ETF)"/></td>
+              </tr>
+            </table>         
+            
+         
+
+<p class="ex1">
+<b>Enter ticker to analyze: </b> <text><input type="text" name="ticker" size="5" cols="10"></input></text>
+&nbsp;&nbsp;
+
+<SELECT NAME="tickerType">
+<OPTION selected="selected" VALUE="Stock">Stock</OPTION>
+<OPTION VALUE="MutualFund">Mutual Fund</OPTION>
+</SELECT>
+</p>
+
+</div>
+            <!--  Commented Out {% include "disclaimer.html" %} -->
+ <!--  Disclaimer -->
+ <div align="center">
+ <p class="ex2">*Consult your financial advisor and perform independent research before conducting any trades</p>
+ </div>
+
+   
+            
+            <div align="center">
+                <input type="submit" value="Submit Ticker"></input>
+
+            </div>
+           
+
+         </form>
+   </body>
+ </html>

@@ -1,0 +1,71 @@
+buildscript {
+    ext {
+        springBootVersion = '1.1.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    if (project.hasProperty('buildversion')) {
+        project.version = project.buildversion
+    } else {
+        project.version = '1.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceSets {
+    integrationTest {
+        java.srcDir file('src/integrationTest/java')
+    }
+}
+
+jar {
+    baseName = 'stockAnalyzerV3'
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.data:spring-data-cassandra:1.1.0.RELEASE")
+
+    compile("org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.1.0.RELEASE")
+    compile("org.springframework.cloud:spring-cloud-spring-service-connector:1.1.0.RELEASE")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("com.jayway.restassured:rest-assured:2.3.2")
+    testCompile("com.jayway.restassured:spring-mock-mvc:2.3.2")
+    testCompile("org.mockito:mockito-core")
+
+    integrationTestCompile sourceSets.main.output
+    integrationTestCompile configurations.testCompile
+    integrationTestCompile sourceSets.test.output
+    integrationTestRuntime configurations.testRuntime
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+check.dependsOn -= integrationTest
