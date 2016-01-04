@@ -5,3 +5,36 @@ This is a demo application that:
 * uses Spring Boot
 * implements a http://http://cloud.spring.io/spring-cloud-connectors[spring-cloud-connector] for the Pivotal CF DataStax Enterprise Service
 * History of the stock tickers is persisted in a table in Cassandra
+
+
+This application requires a DataStax Cassandra DB service bound to it.
+
+Verify that the DataStax tile is installed:
+___________________________________________
+
+$ cf marketplace
+Getting services from marketplace in org OrgA / space development as admin...
+OK
+
+service          plans          description   
+app-autoscaler   bronze, gold   Scales bound applications in response to load   
+p-cassandra      multi-tenant   Cassandra service for application development and testing   
+
+TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given se
+
+Create the Service:
+___________________
+$ cf cs p-cassandra multi-tenant StockAnalyzerDb
+
+The name of the service instance should match what is there in the manifest.yml
+Note: The Datastax Enterprise for PCF tile has to be installed in your instance for the create service command to work.
+
+
+To Deploy:
+__________
+
+cd /Users/ssahadevan/Downloads/code/stockAnalyzer-java-v3/   <<<  Change This is the directory you installed this on your computer >>>
+
+cf push 
+
+
