@@ -40,14 +40,13 @@ cf push
 
 To Test:
 ________
-
 Enter a stock ticker at:
 
-https://stockanalyzerv3.float1.fe.gopivotal.com/index
+https://ss-stockanalyzerv3.cfapps.pez.pivotal.io/index
 
 An entry will be added to the tickerHistory table:
 
-https://stockanalyzerv3.float1.fe.gopivotal.com/history
+https://ss-stockanalyzerv3.cfapps.pez.pivotal.io/history
 
 Code Changes made:
 __________________
